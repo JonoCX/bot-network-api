@@ -36,14 +36,14 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
         return sessionFactory.getCurrentSession();
     }
 
+    @SuppressWarnings("unchecked")
     protected Class<T> getEntityClass() {
         return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     protected List<T> getUniqueObjects(List<T> objects) {
         Set<T> set = new LinkedHashSet<>(objects);
-        List<T> uniques = new ArrayList<>(set);
-        return uniques;
+        return new ArrayList<>(set);
     }
 
     public void flush() {
@@ -55,6 +55,7 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <S extends T> S save(S entity) {
         entity = (S) getSession().merge(entity);
         getSession().saveOrUpdate(entity);
@@ -63,7 +64,7 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
 
     @Override
     public T findOne(V v) {
-        return (T) getSession().get(getEntityClass(), v);
+        return getSession().get(getEntityClass(), v);
     }
 
     @Override
@@ -72,6 +73,7 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Iterable<T> findAll() {
         Criteria criteria = getSession().createCriteria(getEntityClass());
         criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
@@ -79,6 +81,7 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Iterable<T> findAll(Iterable<V> iterable) {
         List<V> idList = new ArrayList<>();
         for (V v : iterable) {
@@ -130,6 +133,7 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Iterable<T> findAll(Sort sort) {
         CriteriaBuilder builder = new CriteriaBuilder(getSession(), getEntityClass());
         builder.addSort(sort);
@@ -139,6 +143,7 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Page<T> findAll(Pageable pageable) {
         CriteriaBuilder builder = new CriteriaBuilder(getSession(), getEntityClass());
         if (pageable.getSort() != null) {
