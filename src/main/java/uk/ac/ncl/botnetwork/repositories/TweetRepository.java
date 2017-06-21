@@ -1,7 +1,8 @@
-package uk.ac.ncl.repositories;
+package uk.ac.ncl.botnetwork.repositories;
 
-import uk.ac.ncl.AbstractHibernateRepository;
-import uk.ac.ncl.domain.Tweet;
+import org.springframework.stereotype.Repository;
+import uk.ac.ncl.botnetwork.AbstractHibernateRepository;
+import uk.ac.ncl.botnetwork.domain.Tweet;
 
 /**
  *
@@ -9,6 +10,7 @@ import uk.ac.ncl.domain.Tweet;
  *
  * @author Jonathan Carlton
  */
+@Repository
 public class TweetRepository extends AbstractHibernateRepository<Tweet, String>
 {
     /*

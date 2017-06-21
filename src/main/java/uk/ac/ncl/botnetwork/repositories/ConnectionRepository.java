@@ -1,15 +1,17 @@
-package uk.ac.ncl.repositories;
+package uk.ac.ncl.botnetwork.repositories;
 
 import org.hibernate.query.Query;
-import uk.ac.ncl.AbstractHibernateRepository;
-import uk.ac.ncl.domain.Connection;
-import uk.ac.ncl.domain.User;
+import org.springframework.stereotype.Repository;
+import uk.ac.ncl.botnetwork.AbstractHibernateRepository;
+import uk.ac.ncl.botnetwork.domain.Connection;
+import uk.ac.ncl.botnetwork.domain.User;
 
 import java.util.List;
 
 /**
  * @author Jonathan Carlton
  */
+@Repository
 public class ConnectionRepository extends AbstractHibernateRepository<Connection, Long>
 {
     @SuppressWarnings("unchecked")

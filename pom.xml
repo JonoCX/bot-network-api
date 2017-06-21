@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>uk.ac.ncl</groupId>
+    <groupId>uk.ac.ncl.botnetwork</groupId>
     <artifactId>bot-network-api</artifactId>
-    <version>0.1</version>
+    <version>0.3</version>
     <name>Bot Network API</name>
 
     <properties>
@@ -72,12 +72,6 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>apache-log4j-extras</artifactId>
-            <version>1.2.17</version>
-        </dependency>
     </dependencies>
 
     <repositories>
@@ -101,5 +95,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -1,11 +1,9 @@
-package uk.ac.ncl.repositories;
+package uk.ac.ncl.botnetwork.repositories;
 
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import uk.ac.ncl.AbstractHibernateRepository;
-import uk.ac.ncl.domain.User;
-
-import java.util.List;
+import uk.ac.ncl.botnetwork.AbstractHibernateRepository;
+import uk.ac.ncl.botnetwork.domain.User;
 
 /**
  * @author Jonathan Carlton

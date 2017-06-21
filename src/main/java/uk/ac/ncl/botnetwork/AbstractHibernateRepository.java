@@ -1,4 +1,4 @@
-package uk.ac.ncl;
+package uk.ac.ncl.botnetwork;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;

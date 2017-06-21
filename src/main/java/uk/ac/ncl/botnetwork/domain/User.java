@@ -1,4 +1,4 @@
-package uk.ac.ncl.domain;
+package uk.ac.ncl.botnetwork.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

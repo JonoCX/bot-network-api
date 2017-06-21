@@ -1,4 +1,4 @@
-package uk.ac.ncl.domain;
+package uk.ac.ncl.botnetwork.domain;
 
 import javax.persistence.*;
 
@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Table(name = "connection", schema = "bot_network")
 public class Connection 
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
