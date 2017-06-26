@@ -23,7 +23,7 @@ public class ConnectionRepository extends AbstractHibernateRepository<Connection
     }
 
     @SuppressWarnings("unchecked")
-    public List<Connection> findAllFollowers(User user) {
+    public List<User> findAllFollowers(User user) {
         Query query = getSession().createQuery(
                 "select c.origin from Connection c where c.destination = :user"
         ).setParameter("user", user);
@@ -31,9 +31,25 @@ public class ConnectionRepository extends AbstractHibernateRepository<Connection
     }
 
     @SuppressWarnings("unchecked")
-    public List<Connection> findAllFollowing(User user) {
+    public List<User> findAllFollowing(User user) {
         Query query = getSession().createQuery(
                 "select c.destination from Connection c where c.origin = :user"
+        ).setParameter("user", user);
+        return query.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Long> findAllFollowersIDs(User user) {
+        Query query = getSession().createQuery(
+                "select c.origin.twitterId from Connection c where c.destination = :user"
+        ).setParameter("user", user);
+        return query.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Long> findAllFollowingIDs(User user) {
+        Query query = getSession().createQuery(
+                "select c.destination.twitterId from Connection c where c.origin = :user"
         ).setParameter("user", user);
         return query.list();
     }
