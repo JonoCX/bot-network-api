@@ -6,7 +6,7 @@
 
     <groupId>uk.ac.ncl.botnetwork</groupId>
     <artifactId>bot-network-api</artifactId>
-    <version>0.3</version>
+    <version>0.4</version>
     <name>Bot Network API</name>
 
     <properties>

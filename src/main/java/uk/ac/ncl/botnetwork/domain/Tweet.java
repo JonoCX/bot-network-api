@@ -19,6 +19,12 @@ public class Tweet
     @Id
     private String text;
 
+    public Tweet() { }
+
+    public Tweet(String text) {
+        this.text = text;
+    }
+
     @Override
     public String toString() {
         return "Tweet [" +

@@ -20,6 +20,19 @@ public class User
     private String consumerSecret;
     private String accessToken;
     private String accessTokenSecret;
+    private Boolean checkedOut;
+
+    public User() { }
+
+    public User(Long twitterId, String screenName, String consumerKey, String consumerSecret, String accessToken,
+                String accessTokenSecret) {
+        this.twitterId = twitterId;
+        this.screenName = screenName;
+        this.consumerKey = consumerKey;
+        this.consumerSecret = consumerSecret;
+        this.accessToken = accessToken;
+        this.accessTokenSecret = accessTokenSecret;
+    }
 
     @Override
     public String toString() {
@@ -93,5 +106,13 @@ public class User
 
     public void setAccessTokenSecret(String accessTokenSecret) {
         this.accessTokenSecret = accessTokenSecret;
+    }
+
+    public Boolean getCheckedOut() {
+        return checkedOut;
+    }
+
+    public void setCheckedOut(Boolean checkedOut) {
+        this.checkedOut = checkedOut;
     }
 }

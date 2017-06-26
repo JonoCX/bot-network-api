@@ -25,6 +25,13 @@ public class Connection
     @JoinColumn(name = "destination_id")
     private User destination;
 
+    public Connection() { }
+
+    public Connection(User origin, User destination) {
+        this.origin = origin;
+        this.destination = destination;
+    }
+
     @Override
     public String toString() {
         return "Connection [" +
