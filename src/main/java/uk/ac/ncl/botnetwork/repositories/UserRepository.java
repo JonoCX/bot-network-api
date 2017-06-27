@@ -20,21 +20,4 @@ public class UserRepository extends AbstractHibernateRepository<User, Long>
         ).setParameter("screenName", screenName);
         return (User) query.list().get(0);
     }
-
-    public User checkOutUser() {
-        Query query = getSession().createQuery(
-                "from User where checkedOut = false"
-        );
-        User user = (User) query.list().get(0);
-
-        if (user == null) {
-            return null;
-        }
-        else {
-            // check this user out.
-            user.setCheckedOut(Boolean.TRUE);
-            this.save(user);
-            return user;
-        }
-    }
 }

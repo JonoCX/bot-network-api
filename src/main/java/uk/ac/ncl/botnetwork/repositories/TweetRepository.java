@@ -6,7 +6,6 @@ import uk.ac.ncl.botnetwork.AbstractHibernateRepository;
 import uk.ac.ncl.botnetwork.domain.Tweet;
 
 /**
- *
  * Repository for the Tweet database entity.
  *
  * @author Jonathan Carlton
@@ -14,9 +13,6 @@ import uk.ac.ncl.botnetwork.domain.Tweet;
 @Repository
 public class TweetRepository extends AbstractHibernateRepository<Tweet, String>
 {
-    /*
-        No implementation, yet. Probably don't need anything specific.
-     */
     public Tweet getRandomTweet() {
         Query query = getSession().createQuery(
                 "from Tweet order by RANDOM() limit 1"

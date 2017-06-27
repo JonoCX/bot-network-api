@@ -18,11 +18,17 @@ public class Tweet
 {
     @Id
     private String text;
+    private Long classificationId;
 
     public Tweet() { }
 
     public Tweet(String text) {
         this.text = text;
+    }
+
+    public Tweet(String text, Long classificationId) {
+        this.text = text;
+        this.classificationId = classificationId;
     }
 
     @Override
@@ -53,5 +59,13 @@ public class Tweet
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Long getClassificationId() {
+        return classificationId;
+    }
+
+    public void setClassificationId(Long classificationId) {
+        this.classificationId = classificationId;
     }
 }

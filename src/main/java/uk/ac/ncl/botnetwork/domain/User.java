@@ -16,22 +16,12 @@ public class User
 {
     @Id private Long twitterId;
     private String screenName;
-    private String consumerKey;
-    private String consumerSecret;
-    private String accessToken;
-    private String accessTokenSecret;
-    private Boolean checkedOut;
 
     public User() { }
 
-    public User(Long twitterId, String screenName, String consumerKey, String consumerSecret, String accessToken,
-                String accessTokenSecret) {
+    public User(Long twitterId, String screenName) {
         this.twitterId = twitterId;
         this.screenName = screenName;
-        this.consumerKey = consumerKey;
-        this.consumerSecret = consumerSecret;
-        this.accessToken = accessToken;
-        this.accessTokenSecret = accessTokenSecret;
     }
 
     @Override
@@ -74,45 +64,5 @@ public class User
 
     public void setScreenName(String screenName) {
         this.screenName = screenName;
-    }
-
-    public String getConsumerKey() {
-        return consumerKey;
-    }
-
-    public void setConsumerKey(String consumerKey) {
-        this.consumerKey = consumerKey;
-    }
-
-    public String getConsumerSecret() {
-        return consumerSecret;
-    }
-
-    public void setConsumerSecret(String consumerSecret) {
-        this.consumerSecret = consumerSecret;
-    }
-
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
-    public String getAccessTokenSecret() {
-        return accessTokenSecret;
-    }
-
-    public void setAccessTokenSecret(String accessTokenSecret) {
-        this.accessTokenSecret = accessTokenSecret;
-    }
-
-    public Boolean getCheckedOut() {
-        return checkedOut;
-    }
-
-    public void setCheckedOut(Boolean checkedOut) {
-        this.checkedOut = checkedOut;
     }
 }
