@@ -1,8 +1,8 @@
 package uk.ac.ncl.botnetwork.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
+import javax.persistence.*;
 
 /**
  *
@@ -20,21 +20,28 @@ public class Tweet
     private String text;
     private Long classificationId;
 
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private User user;
+
     public Tweet() { }
 
     public Tweet(String text) {
         this.text = text;
     }
 
-    public Tweet(String text, Long classificationId) {
+    public Tweet(String text, Long classificationId, User user) {
         this.text = text;
         this.classificationId = classificationId;
+        this.user = user;
     }
 
     @Override
     public String toString() {
         return "Tweet [" +
                 "text='" + text + '\'' +
+                ", classificationId=" + classificationId +
+                ", user=" + user +
                 ']';
     }
 
@@ -67,5 +74,13 @@ public class Tweet
 
     public void setClassificationId(Long classificationId) {
         this.classificationId = classificationId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
