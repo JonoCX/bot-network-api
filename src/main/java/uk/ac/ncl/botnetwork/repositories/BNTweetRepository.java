@@ -11,7 +11,7 @@ import uk.ac.ncl.botnetwork.domain.Tweet;
  * @author Jonathan Carlton
  */
 @Repository
-public class TweetRepository extends AbstractHibernateRepository<Tweet, String>
+public class BNTweetRepository extends AbstractHibernateRepository<Tweet, String>
 {
     public Tweet getRandomTweet() {
         Query query = getSession().createQuery(
