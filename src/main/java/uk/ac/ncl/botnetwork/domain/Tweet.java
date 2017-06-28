@@ -30,6 +30,11 @@ public class Tweet
         this.text = text;
     }
 
+    public Tweet(String text, Long classificationId) {
+        this.text = text;
+        this.classificationId = classificationId;
+    }
+
     public Tweet(String text, Long classificationId, User user) {
         this.text = text;
         this.classificationId = classificationId;
