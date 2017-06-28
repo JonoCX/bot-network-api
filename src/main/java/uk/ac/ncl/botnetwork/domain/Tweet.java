@@ -21,7 +21,7 @@ public class Tweet
     private Long classificationId;
 
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Tweet() { }
