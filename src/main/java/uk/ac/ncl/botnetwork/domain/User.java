@@ -1,8 +1,6 @@
 package uk.ac.ncl.botnetwork.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Database entity to represent a user within
@@ -17,12 +15,23 @@ public class User
     @Id private Long twitterId;
     private String screenName;
 
+    @ManyToOne
+    @JoinColumn(name = "config_Id")
+    private Config config;
+
     public User() { }
 
     public User(Long twitterId, String screenName) {
         this.twitterId = twitterId;
         this.screenName = screenName;
     }
+
+    public User(Long twitterId, String screenName, Config config) {
+        this.twitterId = twitterId;
+        this.screenName = screenName;
+        this.config = config;
+    }
+
 
     @Override
     public String toString() {
@@ -64,5 +73,13 @@ public class User
 
     public void setScreenName(String screenName) {
         this.screenName = screenName;
+    }
+
+    public Config getConfig() {
+        return config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
     }
 }

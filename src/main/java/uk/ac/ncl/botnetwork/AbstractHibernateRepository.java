@@ -64,7 +64,7 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
 
     @Override
     public T findOne(V v) {
-        return getSession().get(getEntityClass(), v);
+        return (T)getSession().get(getEntityClass(), v);
     }
 
     @Override

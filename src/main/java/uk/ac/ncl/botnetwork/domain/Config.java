@@ -1,8 +1,6 @@
 package uk.ac.ncl.botnetwork.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Store user configuration to
@@ -14,7 +12,10 @@ import javax.persistence.Table;
 @Table(name = "config", schema = "bot_network")
 public class Config
 {
-    @Id private Long configId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long configId;
+
     private int numUsers;
     private int maxTweets;
     private int minTweets;
@@ -23,8 +24,7 @@ public class Config
 
     public Config() { }
 
-    public Config(Long configId, int numUsers, int maxTweets, int minTweets, int maxFollowers, int minFollowers) {
-        this.configId = configId;
+    public Config(int numUsers, int maxTweets, int minTweets, int maxFollowers, int minFollowers) {
         this.numUsers = numUsers;
         this.maxTweets = maxTweets;
         this.minTweets = minTweets;

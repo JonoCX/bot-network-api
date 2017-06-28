@@ -1,6 +1,6 @@
 package uk.ac.ncl.botnetwork.repositories;
 
-import org.hibernate.query.Query;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import uk.ac.ncl.botnetwork.AbstractHibernateRepository;
 import uk.ac.ncl.botnetwork.domain.Connection;

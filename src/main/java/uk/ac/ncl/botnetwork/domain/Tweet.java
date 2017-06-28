@@ -16,7 +16,11 @@ import javax.persistence.*;
 @Table(name = "tweet", schema = "bot_network")
 public class Tweet 
 {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String text;
     private Long classificationId;
 
@@ -87,5 +91,13 @@ public class Tweet
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
