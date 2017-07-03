@@ -24,8 +24,7 @@ public class BNTweetRepository extends AbstractHibernateRepository<GeneratedTwee
 
     public List<GeneratedTweet> getAll() {
         Query query = getSession().createQuery(
-                "from GeneratedTweet"
-        );
+                "from GeneratedTweet");
         return (List<GeneratedTweet>) query.list();
     }
 }
