@@ -1,7 +1,5 @@
 package uk.ac.ncl.botnetwork.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import javax.persistence.*;
 
 /**
@@ -13,8 +11,8 @@ import javax.persistence.*;
  * @author Jonathan Carlton
  */
 @Entity
-@Table(name = "tweet", schema = "bot_network")
-public class Tweet 
+@Table(name = "generated_tweet", schema = "bot_network")
+public class GeneratedTweet
 {
 
     @Id
@@ -28,18 +26,18 @@ public class Tweet
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Tweet() { }
+    public GeneratedTweet() { }
 
-    public Tweet(String text) {
+    public GeneratedTweet(String text) {
         this.text = text;
     }
 
-    public Tweet(String text, Long classificationId) {
+    public GeneratedTweet(String text, Long classificationId) {
         this.text = text;
         this.classificationId = classificationId;
     }
 
-    public Tweet(String text, Long classificationId, User user) {
+    public GeneratedTweet(String text, Long classificationId, User user) {
         this.text = text;
         this.classificationId = classificationId;
         this.user = user;
@@ -47,7 +45,7 @@ public class Tweet
 
     @Override
     public String toString() {
-        return "Tweet [" +
+        return "GeneratedTweet [" +
                 "text='" + text + '\'' +
                 ", classificationId=" + classificationId +
                 ", user=" + user +
@@ -59,7 +57,7 @@ public class Tweet
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Tweet tweet = (Tweet) o;
+        GeneratedTweet tweet = (GeneratedTweet) o;
 
         return text.equals(tweet.text);
     }
