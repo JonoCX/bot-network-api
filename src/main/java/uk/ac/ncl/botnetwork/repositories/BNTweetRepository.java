@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 import uk.ac.ncl.botnetwork.AbstractHibernateRepository;
 import uk.ac.ncl.botnetwork.domain.GeneratedTweet;
 
+import java.util.List;
+
 /**
  * Repository for the GeneratedTweet database entity.
  *
@@ -18,5 +20,12 @@ public class BNTweetRepository extends AbstractHibernateRepository<GeneratedTwee
                 "from GeneratedTweet order by RANDOM() limit 1"
         );
         return (GeneratedTweet) query.list().get(0);
+    }
+
+    public List<GeneratedTweet> getAll() {
+        Query query = getSession().createQuery(
+                "from GeneratedTweet"
+        );
+        return (List<GeneratedTweet>) query.list();
     }
 }
