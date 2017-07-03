@@ -22,7 +22,9 @@ public class BNTweetRepository extends AbstractHibernateRepository<GeneratedTwee
         return (GeneratedTweet) query.list().get(0);
     }
 
-    public List<GeneratedTweet> getAll() {
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<GeneratedTweet> findAll() {
         Query query = getSession().createQuery(
                 "from GeneratedTweet");
         return (List<GeneratedTweet>) query.list();
