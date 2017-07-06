@@ -26,6 +26,10 @@ public class GeneratedTweet
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "config_Id")
+    private Config config;
+
     public GeneratedTweet() { }
 
     public GeneratedTweet(String text) {
@@ -41,6 +45,13 @@ public class GeneratedTweet
         this.text = text;
         this.classificationId = classificationId;
         this.user = user;
+    }
+
+    public GeneratedTweet(String text, Long classificationId, User user, Config config) {
+        this.text = text;
+        this.classificationId = classificationId;
+        this.user = user;
+        this.config = config;
     }
 
     @Override
@@ -97,5 +108,13 @@ public class GeneratedTweet
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Config getConfig() {
+        return config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
     }
 }

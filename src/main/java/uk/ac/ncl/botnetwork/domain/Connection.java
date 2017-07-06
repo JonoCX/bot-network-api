@@ -25,11 +25,21 @@ public class Connection
     @JoinColumn(name = "destination_id")
     private User destination;
 
+    @ManyToOne
+    @JoinColumn(name = "config_Id")
+    private Config config;
+
     public Connection() { }
 
     public Connection(User origin, User destination) {
         this.origin = origin;
         this.destination = destination;
+    }
+
+    public Connection(User origin, User destination, Config config) {
+        this.origin = origin;
+        this.destination = destination;
+        this.config = config;
     }
 
     @Override

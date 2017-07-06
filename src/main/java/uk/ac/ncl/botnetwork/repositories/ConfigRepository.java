@@ -23,6 +23,13 @@ public class ConfigRepository extends AbstractHibernateRepository<Config, Long>
         return (Config) query.list().get(0);
     }
 
+    public List<Config> findNotComplete() {
+        Query query = getSession().createQuery(
+                "from Config where complete = false"
+        );
+        return query.list();
+    }
+
 
 
 }

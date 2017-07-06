@@ -21,6 +21,7 @@ public class Config
     private int minTweets;
     private int maxFollowers;
     private int minFollowers;
+    private boolean complete;
 
     public Config() { }
 
@@ -30,6 +31,7 @@ public class Config
         this.minTweets = minTweets;
         this.maxFollowers = maxFollowers;
         this.minFollowers = minFollowers;
+        this.complete = false;
     }
 
     @Override
@@ -99,5 +101,13 @@ public class Config
 
     public void setMinFollowers(int minFollowers) {
         this.minFollowers = minFollowers;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 }

@@ -3,7 +3,9 @@ package uk.ac.ncl.botnetwork.repositories;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import uk.ac.ncl.botnetwork.AbstractHibernateRepository;
+import uk.ac.ncl.botnetwork.domain.Config;
 import uk.ac.ncl.botnetwork.domain.GeneratedTweet;
+import uk.ac.ncl.botnetwork.domain.User;
 
 import java.util.List;
 
@@ -28,5 +30,13 @@ public class BNTweetRepository extends AbstractHibernateRepository<GeneratedTwee
         Query query = getSession().createQuery(
                 "from GeneratedTweet");
         return (List<GeneratedTweet>) query.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<GeneratedTweet> getByConfig(Config c) {
+        Query query = getSession().createQuery(
+                "from GeneratedTweet where config = :config"
+        ).setParameter("config", c);
+        return query.list();
     }
 }
