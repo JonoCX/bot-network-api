@@ -22,25 +22,43 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * The abstract implementation of the hibernate repository which
+ * all other repositories (in this scope) extend.
  *
- * Sourced from Twitter-API (part of the vaza dengue project)
- * code originally written by Diego.
+ * Provides basic, generic operations on the underlying database such
+ * as; find, save, and delete.
  *
  * @author Jonathan Carlton
+ * @see PagingAndSortingRepository
  */
 public class AbstractHibernateRepository<T, V extends Serializable> implements PagingAndSortingRepository<T, V>
 {
     @Autowired private SessionFactory sessionFactory;
 
+    /**
+     * Fetch the current hibernate session
+     * @return the session
+     * @see Session
+     */
     protected Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
+    /**
+     * Get the entity class.
+     * @return the class of the object that is extending this
+     * abstract base.
+     */
     @SuppressWarnings("unchecked")
     protected Class<T> getEntityClass() {
         return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
+    /**
+     * Reduce a list down to it's unique entities.
+     * @param objects a list containing duplicates
+     * @return  a list with no duplicates
+     */
     protected List<T> getUniqueObjects(List<T> objects) {
         Set<T> set = new LinkedHashSet<>(objects);
         return new ArrayList<>(set);
@@ -54,6 +72,9 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
         this.getSession().evict(t);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @SuppressWarnings("unchecked")
     public <S extends T> S save(S entity) {
@@ -62,16 +83,26 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
         return entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
+    @SuppressWarnings("unchecked")
     public T findOne(V v) {
         return (T)getSession().get(getEntityClass(), v);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean exists(V v) {
         return this.findOne(v) != null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @SuppressWarnings("unchecked")
     public Iterable<T> findAll() {
@@ -80,6 +111,9 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
         return getUniqueObjects(criteria.list());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @SuppressWarnings("unchecked")
     public Iterable<T> findAll(Iterable<V> iterable) {
@@ -93,6 +127,9 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
         return getUniqueObjects(criteria.list());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public long count() {
         return (Long) getSession()
@@ -101,16 +138,25 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
                 .uniqueResult();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void delete(V v) {
         this.delete(this.findOne(v));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void delete(T k) {
         getSession().delete(k);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void delete(Iterable<? extends T> iterable) {
         for (T t : iterable) {
@@ -118,12 +164,18 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void deleteAll() {
         String name = getEntityClass().getSimpleName();
         getSession().createQuery("delete from " + name).executeUpdate();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <S extends T> Iterable<S> save(Iterable<S> iterable) {
         for (S s : iterable) {
@@ -132,6 +184,9 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
         return iterable;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @SuppressWarnings("unchecked")
     public Iterable<T> findAll(Sort sort) {
@@ -142,6 +197,9 @@ public class AbstractHibernateRepository<T, V extends Serializable> implements P
         return getUniqueObjects(criteria.list());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @SuppressWarnings("unchecked")
     public Page<T> findAll(Pageable pageable) {

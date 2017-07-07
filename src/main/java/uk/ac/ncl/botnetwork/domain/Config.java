@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Store user configuration to
  * generate network
  *
- * @autor Callum McClean
+ * @author Callum McClean
  */
 @Entity
 @Table(name = "config", schema = "bot_network")

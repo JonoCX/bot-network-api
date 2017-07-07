@@ -7,8 +7,8 @@ import org.hibernate.criterion.Order;
 import org.springframework.data.domain.Sort;
 
 /**
- * Sourced from Twitter-API (part of the vaza dengue project)
- * code originally written by Diego.
+ * A builder for the creation of criterion that can be applied
+ * to the queries being executed on the database.
  *
  * @author Jonathan Carlton
  */
@@ -20,10 +20,19 @@ public class CriteriaBuilder
         this.criteria = session.createCriteria(c);
     }
 
+    /**
+     * Add a {@link Criterion} to the internal {@link Criteria}.
+     * @param criterion the criterion to be added.
+     */
     public void addCriterion(Criterion criterion) {
         this.criteria.add(criterion);
     }
 
+    /**
+     * Specifically add {@link Sort} to the {@link Criteria} to determine
+     * the order of query results.
+     * @param sort the sort that is going to be added to the criteria
+     */
     public void addSort(Sort sort) {
         for (Sort.Order order : sort) {
             if (order.isAscending()) {
@@ -34,6 +43,10 @@ public class CriteriaBuilder
         }
     }
 
+    /**
+     * Get the internal {@link Criteria}
+     * @return  the criteria
+     */
     public Criteria getCriteria() {
         return criteria;
     }
