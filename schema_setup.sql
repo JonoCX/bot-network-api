@@ -1,0 +1,1 @@
+CREATE SCHEMA bot_network;
