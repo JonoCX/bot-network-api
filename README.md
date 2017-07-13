@@ -28,3 +28,7 @@ Add the project as a dependency in your project (in the pom.xml)
     <version>0.4</version>
 </dependency>
 ```
+
+### Misc
+
+Java documentation available [here](https://jonocx.github.io/bot-network-api/)
