@@ -2,6 +2,11 @@
 
 This project works as the interface between the underlying Postgres database and the simulation program. It provides a set of database entities and repositories to access said entities.
 
+### Requirements
+The basic requirement is that you have Java, Maven, and Postgres installed.
+
+`$ psql -f schema_setup.sql -d dengue`
+
 ### Installation
 Clone the repository to a local directory:
 
