@@ -5,7 +5,7 @@ This project works as the interface between the underlying Postgres database and
 ### Requirements
 The basic requirement is that you have Java, Git, Maven, and Postgres installed.
 
-There is a presumption that you have setup a database named 'dengue' which contains all of the relevant schema's for the project as a whole (TwitterRank, Data Crawling, etc.). This project requires a separate schema to store it's tables, the setup file (as shown below) to create it.
+There is a presumption that you have setup a database named 'dengue' which contains all of the relevant schema's for the project as a whole (TwitterRank, Data Crawling, etc.). This project requires a separate schema to store it's tables, run the setup file (as shown below) to create it.
 
 `$ psql -f schema_setup.sql -d dengue`
 
