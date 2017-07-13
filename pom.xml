@@ -74,13 +74,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>JBOSS</id>
-            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
-        </repository>
-    </repositories>
-
     <packaging>jar</packaging>
 
     <build>
