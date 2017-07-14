@@ -9,6 +9,8 @@ There is a presumption that you have setup a database named 'dengue' which conta
 
 `$ psql -f schema_setup.sql -d dengue`
 
+The hibernate/spring configuration is handled in the simulation program.
+
 ### Installation
 Clone the repository to a local directory:
 
